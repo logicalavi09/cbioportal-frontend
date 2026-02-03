@@ -36,10 +36,7 @@ const endpoints = [
 export function proxyColumnStore(client: any, endpoint: string) {
     // TODO use isClickhouseMode() instead, for some reason when invoked here isClickhouseMode()
     //  throws an error complaining about getBrowserWindow being undefined
-    const browserWindow =
-        typeof window === 'undefined' ? undefined : getBrowserWindow();
-
-    if (browserWindow && /legacy=1/.test(browserWindow.location.search)) {
+    if (/legacy=1/.test(getBrowserWindow().location.search)) {
         return;
     }
 
